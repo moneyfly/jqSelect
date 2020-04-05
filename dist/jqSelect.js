@@ -1,4 +1,5 @@
 /*! jqSelect - v0.0.1 - 2020-04-05
+* https://github.com/moneyfly/jqSelect
 * Copyright (c) 2020 Moneyfly; Licensed MIT */
 "use strict";( function($) {
         // Collection method.
