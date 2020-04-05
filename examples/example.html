@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>test Test Suite</title>
+        <!-- Load local jQuery. This can be overridden with a ?jquery=___ param. -->
+        <script src="../libs/jquery-loader.js"></script>
+
+        <!-- Load local lib and tests. -->
+        <script src="../dist/jqselect.min.js"></script>
+        <link href="../dist/css/jqSelect.min.css" media="all" rel="stylesheet" type="text/css" />
+        <style>
+            .container {
+                margin: auto 0;
+                width: 100%;
+            }
+            table {
+                border-collapse: collapse;
+                border-spacing: 0;
+                width: 50%;
+            }
+            table tr td {
+                border: 1px solid #cccccc;
+                padding: 10px;
+            }
+            span {
+                width: 40% !important;
+            }
+        </style>
+
+    </head>
+    <body>
+        <script>
+            jQuery(document).ready(function() {
+                var abc = jQuery('.jqselect').jqSelect();
+            });
+        </script>
+        <div class="container">
+            <table>
+                <tr>
+                    <td>data list style</td>
+                    <td>
+                    <input type="text" class="jqselect" datalist="browsers" />
+                    <datalist id="browsers" >
+                        <option value="Internet Explorer"><option value="Firefox"><option value="Chrome"><option value="Opera"><option value="Safari">
+                    </datalist></td>
+                </tr>
+                <tr>
+                    <td>select list style</td>
+                    <td>
+                    <select id="combobox" class="jqselect">
+                        <option value="">Select one...</option>
+                        <option value="ActionScript">ActionScript</option>
+                        <option value="AppleScript">AppleScript</option>
+                        <option value="Asp">Asp</option>
+                        <option value="BASIC">BASIC</option>
+                        <option value="C">C</option>
+                        <option value="C++">C++</option>
+                        <option value="Clojure">Clojure</option>
+                        <option value="COBOL">COBOL</option>
+                        <option value="ColdFusion">ColdFusion</option>
+                        <option value="Erlang">Erlang</option>
+                        <option value="Fortran">Fortran</option>
+                        <option value="Groovy">Groovy</option>
+                        <option value="Haskell">Haskell</option>
+                        <option value="Java">Java</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="Lisp">Lisp</option>
+                        <option value="Perl">Perl</option>
+                        <option value="PHP">PHP</option>
+                        <option value="Python">Python</option>
+                        <option value="Ruby">Ruby</option>
+                        <option value="Scala">Scala</option>
+                        <option value="Scheme">Scheme</option>
+                    </select></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
