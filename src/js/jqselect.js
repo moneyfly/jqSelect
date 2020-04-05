@@ -16,6 +16,9 @@
                     return;
                 }
                 var $this = $(this);
+                $this.on("change",function(){
+                    input.val($this.val());
+                });
                 // Get all select options
                 var selectOptions = _options($this);
                 var wrapper = $("<span>").addClass("jqselect-wrapper options").insertAfter($this);
@@ -26,8 +29,8 @@
                 input.on("keyup", function() {
                     _renderOptions(_search($(this).val(), selectOptions), dropdownOptions, input, $this);
                     dropdownOptions.show();
-                }).on("input",function(){
-                    _setOriginalInput($this,input.val());
+                }).on("input", function() {
+                    _setOriginalInput($this, input.val());
                 });
                 //Add dropdown menu
                 var dropdownOptions = $("<ul>").appendTo(wrapper).addClass("options-box");
@@ -68,9 +71,9 @@
                 });
             }
         };
-        
-        var _setOriginalInput = function(originalInput,val){
-            originalInput.val(val);
+
+        var _setOriginalInput = function(originalInput, val) {
+            originalInput.val(val).trigger("change");
         };
 
         var _search = function(query, options) {
@@ -79,20 +82,20 @@
                 // if query is empty, returen true;
                 if (query == "") {
                     return {
-                        'text' : this,
-                        'val' : this
+                        'text' : this.text,
+                        'val' : this.val
                     };
                 }
                 // Query Pattern Ignores caseSensitive
                 var pattern = new RegExp(query, "gi");
                 // Search for a match Query in Record
-                var match = this.replace(pattern, function(x) {
+                var match = this.val.replace(pattern, function(x) {
                     return '<span class="options-highlight">' + x + '</span>';
                 });
-                if (match != this) {
+                if (match != this.val) {
                     return {
                         'text' : match,
-                        'val' : this
+                        'val' : this.val
                     };
                 } else {
                     return null;
@@ -109,7 +112,13 @@
                 var optionsElem = $("#" + $(elem).attr("datalist").trim());
             }
             return optionsElem.children("option").map(function() {
-                return $(this).val();
+                var val = $(this).val();
+                var text = $(this).text().trim();
+                var text = text || val;
+                return {
+                    'text' : text,
+                    'val' : val
+                };
             });
         };
     }(jQuery));
