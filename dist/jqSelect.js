@@ -1,6 +1,6 @@
-/*! jqSelect - v0.0.1 - 2020-04-05
+/*! jqSelect - v0.0.1 - 2021-02-21
 * https://github.com/moneyfly/jqSelect
-* Copyright (c) 2020 Moneyfly; Licensed MIT */
+* Copyright (c) 2021 Moneyfly; Licensed MIT */
 "use strict";( function($) {
         // Collection method.
         $.fn.jqSelect = function(options) {
@@ -23,6 +23,9 @@
                 //Add input autocomplete
                 var currentValue = $this.val();
                 var input = $("<input>").appendTo(wrapper).val(currentValue).addClass("jqselect-input");
+                if(this.tagName === "SELECT"){
+                    input.attr("disabled",true);
+                }
                 input.on("keyup", function() {
                     _renderOptions(_search($(this).val(), selectOptions), dropdownOptions, input, $this);
                     dropdownOptions.show();

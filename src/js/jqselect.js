@@ -26,6 +26,9 @@
                 //Add input autocomplete
                 var currentValue = $this.val();
                 var input = $("<input>").appendTo(wrapper).val(currentValue).addClass("jqselect-input");
+                if(this.tagName === "SELECT"){
+                    input.attr("disabled",true);
+                }
                 input.on("keyup", function() {
                     _renderOptions(_search($(this).val(), selectOptions), dropdownOptions, input, $this);
                     dropdownOptions.show();

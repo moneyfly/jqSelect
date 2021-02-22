@@ -11,7 +11,7 @@ span.jqselect-wrapper {
     width: 100%;
 }
 
-.jqselect-input {
+.jqselect-wrapper .jqselect-input {
     width: 100%;
     margin: 0;
     font-family: inherit;
@@ -20,7 +20,7 @@ span.jqselect-wrapper {
     color:#474748;
 }
 
-a.jqselect-dropbutton {
+.jqselect-wrapper a.jqselect-dropbutton {
     cursor: pointer;
     text-decoration: none;
     position: absolute;
@@ -36,7 +36,7 @@ a.jqselect-dropbutton {
     color: #777777;
 }
 
-a.jqselect-dropbutton:before {
+.jqselect-wrapper a.jqselect-dropbutton:before {
     content: "\23f7";
     position: absolute;
     top: 50%;
@@ -47,7 +47,7 @@ a.jqselect-dropbutton:before {
     line-height: 1;
 }
 
-input {
+.jqselect-wrapper input {
     background-position: 5px 5px;
     border: solid 1px #dddddd;
     outline: 0;
@@ -63,11 +63,11 @@ input {
     transition: all 0.4s ease 0s;
 }
 
-.options {
+.jqselect-wrapper .options {
     position: relative;
 }
 
-.options-box {
+.jqselect-wrapper .options-box {
     -webkit-animation: options-box-fade-in .3s ease 1, options-box-move-up .3s ease-out 1;
     animation: options-box-fade-in .3s ease 1, options-box-move-up .3s ease-out 1;
     position: absolute;
@@ -77,6 +77,7 @@ input {
     display: none;
     float: left;
     min-width: 70px;
+    width: 100%;
     padding: 10px 0;
     margin: 0;
     font-size: 12px;
@@ -91,17 +92,17 @@ input {
     box-shadow: 0px 0px 50px 0px rgba(82, 63, 105, 0.15);
 }
 
-.options-box-left {
+.jqselect-wrapper .options-box-left {
     right: auto;
     left: 0;
 }
 
-.options-box-right {
+.jqselect-wrapper .options-box-right {
     right: 0;
     left: auto;
 }
 
-.options-item {
+.jqselect-wrapper .options-item {
     display: block;
     width: 100%;
     padding: 8px 32px 8px 16px;
@@ -116,23 +117,23 @@ input {
     cursor:pointer;
 }
 
-.options-item:hover, .options-item:focus {
+.jqselect-wrapper .options-item:hover, .options-item:focus {
     text-decoration: none;
     background-color: #d4d4d4;
 }
-.options-item.current {
+.jqselect-wrapper .options-item.current {
     color: #fd7e14;
     text-decoration: none;
     background-color: #d4d4d4;
 }
 
-.options-item.disabled, .options-item:disabled {
+.jqselect-wrapper .options-item.disabled, .options-item:disabled {
     color: #adb1c7;
     pointer-events: none;
     background-color: transparent;
 }
 
-.options-item > .la-icon {
+.jqselect-wrapper .options-item > .la-icon {
     display: inline-block;
     margin: auto 0;
     margin-right: 8px;
@@ -140,7 +141,7 @@ input {
     font-size: 20px;
 }
 
-.options-box > .options-item {
+.jqselect-wrapper .options-box > .options-item {
     outline: none !important;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -150,7 +151,7 @@ input {
     flex-grow: 1;
 }
 
-.options-highlight {
+.jqselect-wrapper .options-highlight {
     padding: 0;
     margin:0;
     width: auto !important;
