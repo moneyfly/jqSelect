@@ -1,14 +1,16 @@
-/*! jqSelect - v0.0.1 - 2021-02-21
+/*! jqSelect - v0.0.1 - 2021-03-10
 * https://github.com/moneyfly/jqSelect
 * Copyright (c) 2021 Moneyfly; Licensed MIT */
 "use strict";( function($) {
         // Collection method.
-        $.fn.jqSelect = function(options) {
-            options = $.extend({
-                "version" : "1.0"
-            }, options);
+        $.fn.jqSelect = function(attrs) {
+            var attrs = $.extend({
+                "version" : "1.0",
+                //"wrapper_class":"",
+                //"options_class":"",
+            }, attrs);
 
-            return this.each(function() {
+            return this.each(function(i) {
                 if (this.tagName != "SELECT" && !(this.tagName === "INPUT" && this.getAttribute('type') === 'text' && this.hasAttribute('datalist'))) {
                     return;
                 }
@@ -18,7 +20,11 @@
                 });
                 // Get all select options
                 var selectOptions = _options($this);
-                var wrapper = $("<span>").addClass("jqselect-wrapper options").insertAfter($this);
+                var wrapper_class = "jqselect-wrapper options ";
+                if(attrs.wrapper_class != undefined){
+                    wrapper_class += attrs.wrapper_class;
+                }
+                var wrapper = $("<span>").addClass(wrapper_class).insertAfter($this);
                 $this.hide();
                 //Add input autocomplete
                 var currentValue = $this.val();
@@ -52,20 +58,21 @@
                         dropdownOptions.hide();
                         return;
                     }
-                    _renderOptions(_search("", selectOptions), dropdownOptions, input, $this);
+                    _renderOptions(_search("", selectOptions), dropdownOptions, input, $this, attrs.options_class||"");
                     dropdownOptions.show();
                     // Pass empty string as value to search for, displaying all results
                 });
             });
         };
 
-        var _renderOptions = function(options, optionsContainer, input, originalInput) {
+        var _renderOptions = function(options, optionsContainer, input, originalInput, option_class) {
             /**
              * option (object) {text:'',val:''}
              */
             optionsContainer.html("");
             for (var i = 0; i < options.length; i++) {
-                $("<li>").appendTo(optionsContainer).html(options[i].text).attr("val", options[i].val).addClass("options-item").on("click", function() {
+                var _option_class = "options-item "+option_class+" "+"options-"+options[i].val.replace(" ", "").toLowerCase();
+                $("<li>").appendTo(optionsContainer).html(options[i].text).attr("val", options[i].val).addClass(_option_class).on("click", function() {
                     input.val($(this).attr("val")).trigger("input");
                     optionsContainer.hide();
                 });
