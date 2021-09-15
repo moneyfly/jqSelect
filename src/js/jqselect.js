@@ -35,6 +35,9 @@
                 if(this.tagName === "SELECT"){
                     input.attr("disabled",true);
                 }
+                if($this.attr('readonly')){
+                    input.attr("readonly",true);
+                }
                 input.on("keyup", function() {
                     _renderOptions(_search($(this).val(), selectOptions), dropdownOptions, input, $this);
                     dropdownOptions.show();

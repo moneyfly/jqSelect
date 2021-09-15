@@ -1,4 +1,4 @@
-/*! jqSelect - v0.0.1 - 2021-03-10
+/*! jqSelect - v0.0.1 - 2021-09-15
 * https://github.com/moneyfly/jqSelect
 * Copyright (c) 2021 Moneyfly; Licensed MIT */
 "use strict";( function($) {
@@ -31,6 +31,9 @@
                 var input = $("<input>").appendTo(wrapper).val(currentValue).addClass("jqselect-input");
                 if(this.tagName === "SELECT"){
                     input.attr("disabled",true);
+                }
+                if($this.attr('readonly')){
+                    input.attr("readonly",true);
                 }
                 input.on("keyup", function() {
                     _renderOptions(_search($(this).val(), selectOptions), dropdownOptions, input, $this);
